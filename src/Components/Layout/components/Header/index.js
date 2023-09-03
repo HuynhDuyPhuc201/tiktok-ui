@@ -25,6 +25,21 @@ const MENU_ITEMS = [
     {
         icon: <FontAwesomeIcon icon={faEarthAsia} />,
         title: 'English',
+        children: {
+            title: 'Language',
+            data: [
+                {
+                    type: 'Language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'Language',
+                    code: 'en',
+                    title: 'English',
+                },
+            ],
+        },
     },
     {
         icon: <FontAwesomeIcon icon={faCircleQuestion} />,
@@ -39,6 +54,18 @@ const MENU_ITEMS = [
 
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
+
+    const handleMenuChange = (menuItem) => {
+        // console.log('menuItem: ', menuItem);
+        switch (menuItem.type) {
+            case 'language':
+                //  handle changle language
+                break;
+
+            default:
+                break;
+        }
+    };
 
     useEffect(() => {
         setTimeout(() => {
@@ -85,7 +112,7 @@ function Header() {
                     <Button text>Up load</Button>
                     <Button primary>Log in</Button>
 
-                    <Menu items={MENU_ITEMS}>
+                    <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
                         <button className={cx('more-btn')}>
                             <FontAwesomeIcon icon={faEllipsisVertical} />
                         </button>
