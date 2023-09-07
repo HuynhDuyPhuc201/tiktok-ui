@@ -11,7 +11,6 @@ import HeadlessTippy from '@tippyjs/react/headless';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCircleQuestion,
-    faCloudUpload,
     faCoins,
     faEarthAsia,
     faEllipsisVertical,
@@ -26,6 +25,8 @@ import {
 import AccountItem from '../../../AccountItem';
 import Button from '../../../Button';
 import Menu from '../../../Popper/Menu';
+import { MailboxIcon, MessengerIcon } from '../../../Icons';
+import Image from '../../../Image';
 
 const cx = classNames.bind(styles);
 
@@ -149,9 +150,14 @@ function Header() {
                     {currentUser ? (
                         <>
                             <Tippy delay={[0, 200]} trigger="click" content="Upload video" placement="bottom">
-                                <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faCloudUpload} />
-                                </button>
+                                <>
+                                    <button className={cx('action-btn')}>
+                                        <MessengerIcon />
+                                    </button>
+                                    <button className={cx('action-btn')}>
+                                        <MailboxIcon />
+                                    </button>
+                                </>
                             </Tippy>
                         </>
                     ) : (
@@ -162,10 +168,11 @@ function Header() {
                     )}
                     <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
-                            <img
+                            <Image
                                 className={cx('user-avatar')}
                                 src="https://p16-sign-useast2a.tiktokcdn.com/tos-useast2a-avt-0068-euttp/6dbd83618161dc6a5654eeeb145e5092~c5_100x100.jpeg?x-expires=1693904400&x-signature=gTQWud1U6dq2dohqNYhYYyob%2FDU%3D"
                                 alt="Nguyen Van A"
+                                fallback="https://scontent.fsgn2-5.fna.fbcdn.net/v/t39.30808-6/351318445_1343534856510964_4900598812025266461_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=a2f6c7&_nc_ohc=oH7q5Y82_yEAX__8wau&_nc_ht=scontent.fsgn2-5.fna&oh=00_AfBCPVC0AxOtd_NjgmwqcWJm59di2vnlRdEPsT8x9-EPGQ&oe=64FE0CE5"
                             />
                         ) : (
                             <button className={cx('more-btn')}>
