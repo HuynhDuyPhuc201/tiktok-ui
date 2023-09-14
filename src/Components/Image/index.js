@@ -3,7 +3,7 @@ import images from '../../assets/images';
 import styles from './Image.module.scss';
 import classNames from 'classnames';
 
-function Image({ src, alt, className, setAvartar, fallback: customFallback = images.noImage, ...props }) {
+const Image = forwardRef(({ src, alt, className, fallback: customFallback = images.noImage, ...props }, ref) => {
     const [fallback, setFallback] = useState('');
 
     const handleError = () => {
@@ -13,12 +13,13 @@ function Image({ src, alt, className, setAvartar, fallback: customFallback = ima
     return (
         <img
             className={classNames(styles.wrapper, className)}
-            {...props}
+            ref={ref}
             src={fallback || src}
             alt={alt}
+            {...props}
             onError={handleError}
         />
     );
-}
+});
 
-export default forwardRef(Image);
+export default Image;

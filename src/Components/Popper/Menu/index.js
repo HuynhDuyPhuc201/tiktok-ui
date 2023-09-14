@@ -1,4 +1,4 @@
-import Tippy from '@tippyjs/react';
+import Tippy from '@tippyjs/react/headless';
 import { WrapperPopper } from '..';
 import classNames from 'classnames/bind';
 import styles from './Menu.module.scss';
