@@ -17,11 +17,13 @@ import {
     faSignOut,
     faUser,
 } from '@fortawesome/free-solid-svg-icons';
+
 import Button from '../../../Button';
 import Menu from '../../../Popper/Menu';
 import { MailboxIcon, MessengerIcon } from '../../../Icons';
 import Image from '../../../Image';
 import Search from '../Search';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
@@ -103,7 +105,9 @@ function Header() {
             <div className={cx('inner')}>
                 <div className={cx('logo')}>
                     {/* {console.log(images.logo)} */}
-                    <img src={images.logo} alt="Tiktok" />
+                    <Link to="/" className={cx('logo')}>
+                        <img src={images.logo} alt="Tiktok" />
+                    </Link>
                 </div>
 
                 <Search />

@@ -9,7 +9,6 @@ import { WrapperPopper } from '../../../Popper';
 import { useEffect, useRef, useState } from 'react';
 import { SearchIcon } from '../../../Icons';
 import { useDebounce } from '../../../../hooks';
-import * as request from '../../../../utils/request';
 import * as searchServices from '../../../../apiServices/searchServices';
 const cx = classNames.bind(styles);
 
@@ -48,6 +47,16 @@ function Search() {
         setShowResult(false);
     };
 
+    // test
+
+    const handleChange = (e) => {
+        const searchValue = e.target.value;
+
+        if (!searchValue.startsWith(' ')) {
+            setSearchValue(searchValue);
+        }
+    };
+
     return (
         <HeadlessTippy
             interactive
@@ -71,7 +80,7 @@ function Search() {
                     type="text"
                     placeholder="Enter input..."
                     spellCheck={false}
-                    onChange={(e) => setSearchValue(e.target.value)}
+                    onChange={handleChange}
                     onFocus={() => setShowResult(true)}
                 />
                 {!!searchValue && !loading && (
@@ -81,7 +90,7 @@ function Search() {
                 )}
                 {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
 
-                <button className={cx('search-btn')}>
+                <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
                     <SearchIcon />
                 </button>
             </div>
