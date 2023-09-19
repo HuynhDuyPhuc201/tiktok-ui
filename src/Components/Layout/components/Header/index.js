@@ -21,9 +21,10 @@ import {
 import Button from '../../../Button';
 import Menu from '../../../Popper/Menu';
 import { MailboxIcon, MessengerIcon } from '../../../Icons';
-import Image from '../../../Image';
 import Search from '../Search';
 import { Link } from 'react-router-dom';
+import config from '../../../../config';
+import Image from '../../../Image';
 
 const cx = classNames.bind(styles);
 
@@ -195,7 +196,7 @@ function Header() {
             <div className={cx('inner')}>
                 <div className={cx('logo')}>
                     {/* {console.log(images.logo)} */}
-                    <Link to="/" className={cx('logo')}>
+                    <Link to={config.routes.home} className={cx('logo')}>
                         <img src={images.logo} alt="Tiktok" />
                     </Link>
                 </div>
@@ -226,9 +227,8 @@ function Header() {
                         {currentUser ? (
                             <Image
                                 className={cx('user-avatar')}
-                                src="https://p16-sign-useast2a.tiktokcdn.com/tos-useast2a-avt-0068-euttp/6dbd83618161dc6a5654eeeb145e5092~c5_100x100.jpeg?x-expires=1693904400&x-signature=gTQWud1U6dq2dohqNYhYYyob%2FDU%3D"
+                                src="https://files.fullstack.edu.vn/f8-prod/user_avatars/1/623d4b2d95cec.png"
                                 alt="Nguyen Van A"
-                                fallback="https://scontent.fsgn2-5.fna.fbcdn.net/v/t39.30808-6/351318445_1343534856510964_4900598812025266461_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=a2f6c7&_nc_ohc=oH7q5Y82_yEAX__8wau&_nc_ht=scontent.fsgn2-5.fna&oh=00_AfBCPVC0AxOtd_NjgmwqcWJm59di2vnlRdEPsT8x9-EPGQ&oe=64FE0CE5"
                             />
                         ) : (
                             <button className={cx('more-btn')}>
